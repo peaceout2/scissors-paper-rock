@@ -1,25 +1,25 @@
 function getComputerChoice(){
 
     const num = Math.floor((Math.random()*3)+ 1);
+    
+    let techChoice;
+
     if(num === 1){
-        return "scissor"
+       techChoice =  "rock";
     } else if (num === 2) {
-        return "paper"
+        techChoice = "paper";
     } else {
-        return "rock"
+        techChoice = "rock"
     };
+
+    return techChoice;
 } 
 
 function getHumanChoice() {
 
-    let result =prompt("Scissor, Paper or Rock");
-    if(result.toLowerCase() === "scissor") {
-        return "scissor"
-    } else if(result.toLowerCase() === "paper") {
-        return "paper"
-    } else {
-        return "rock"
-    };
+    let userChoice =prompt("Scissor, Paper or Rock");
+    
+    return userChoice;
     
 }
 
@@ -28,16 +28,18 @@ let humanScore = 0;
 let computerScore = 0;
 
 function playRound(humanChoice,computerChoice){
-    if(humanChoice === "scissor" && computerChoice === "paper"){
+    humanChoiceNew = humanChoice.toLowerCase();
+
+    if(humanChoiceNew === "scissor" && computerChoice === "paper"){
         console.log("You win! scissor beat paper")
         console.log(humanScore += 1)
-    } else if(humanChoice === "paper" && computerChoice === "rock" ){
+    } else if(humanChoiceNew === "paper" && computerChoice === "rock" ){
         console.log("You win! paper beat rock")
         console.log(humanScore += 1)
-    } else if(humanChoice ==="rock" && computerChoice === "scissor"){
+    } else if(humanChoiceNew ==="rock" && computerChoice === "scissor"){
         console.log("You win! rock beat scissor")
         console.log(humanScore +=1)
-    } else if(humanChoice === computerChoice) {
+    } else if(humanChoiceNew === computerChoice) {
         console.log("Draw! Nobody wins")
     } else{
         console.log(`You lose!${computerChoice} beat ${humanChoice}`)
@@ -53,9 +55,9 @@ function playRound(humanChoice,computerChoice){
 function playGame(){
 
     for(let i=1;i<=5;i++) {
-        const humanChoice = getHumanChoice();
-        const computerChoice = getComputerChoice();
-        playRound(humanChoice,computerChoice);
+        const humanSelection = getHumanChoice();
+        const computerSelection = getComputerChoice();
+        playRound(humanSelection,computerSelection);
         
     }
     
